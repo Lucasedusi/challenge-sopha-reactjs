@@ -1,59 +1,56 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-
-import "react-toastify/dist/ReactToastify.css";
-
+import { useForm } from "react-hook-form";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "./styles.scss";
 
+export interface TaskFormData {
+	title: string;
+	description: string;
+	dueDate: string;
+	priority: string;
+}
+
 interface Props {
-	onAddTask: (taskTitle: string) => void;
+	onAddTask: (taskData: TaskFormData) => void;
 }
 
 export function Header({ onAddTask }: Props) {
-	const [title, setTitle] = useState("");
+	const { register, handleSubmit, reset } = useForm<TaskFormData>();
 
-	function handleSubmit(event: FormEvent) {
-		event.preventDefault();
-
-		if (!title) {
-			toast.warn("Escreva alguma coisa", {
-				position: "bottom-center",
-				autoClose: 3000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-				theme: "colored",
-			});
-			return;
-		}
-
-		onAddTask(title);
-		setTitle("");
-	}
-
-	function onChangeTitle(event: ChangeEvent<HTMLInputElement>) {
-		setTitle(event.target.value);
+	function onSubmit(data: TaskFormData) {
+		onAddTask(data);
+		reset();
 	}
 
 	return (
 		<header className="header">
-			<form className="newTaksForm" onSubmit={handleSubmit}>
+			<ToastContainer />
+			<form className="newTaksForm" onSubmit={handleSubmit(onSubmit)}>
 				<input
-					placeholder="Adicione uma tarefa"
-					onChange={onChangeTitle}
-					value={title}
+					{...register("title", { required: true })}
+					placeholder="Título da Tarefa"
 				/>
-				<button>
+				<input {...register("description")} placeholder="Descrição da Tarefa" />
+				<input
+					{...register("dueDate")}
+					type="date"
+					placeholder="Data de Vencimento"
+				/>
+				<select {...register("priority")} defaultValue="">
+					<option value="" disabled hidden>
+						Prioridade
+					</option>
+					<option value="low">Baixa</option>
+					<option value="medium">Média</option>
+					<option value="high">Alta</option>
+				</select>
+				<button type="submit">
 					Criar
 					<AiOutlinePlusCircle size={20} />
 				</button>
 			</form>
-
-			<ToastContainer />
 		</header>
 	);
 }

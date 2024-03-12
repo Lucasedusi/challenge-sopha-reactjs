@@ -1,64 +1,61 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
-import { Header } from "./components/Header";
+
+import { Header, TaskFormData } from "./components/Header";
 import { Tasks } from "./components/Tasks";
 
 export interface ITask {
 	id: string;
 	title: string;
+	description: string;
+	dueDate: string;
+	priority: string;
 	isComplete: boolean;
 }
 
 function App() {
-	const [tasks, setTasks] = useState<ITask[]>(() => {
-		const storageTask = localStorage.getItem("@SaveTask:Tasks");
-
-		if (storageTask) {
-			return JSON.parse(storageTask);
-		}
-
-		return [];
-	});
+	const [tasks, setTasks] = useState<ITask[]>([]);
+	const { register, handleSubmit, reset } = useForm();
 
 	useEffect(() => {
-		localStorage.setItem("@SaveTask:Tasks", JSON.stringify(tasks));
-	}, [tasks]);
+		fetchTasks();
+	}, []);
 
-	function addTask(taskTitle: string) {
-		setTasks([
-			...tasks,
-			{
-				id: uuid(),
-				title: taskTitle,
-				isComplete: false,
-			},
-		]);
-	}
+	const fetchTasks = async () => {
+		const response = await axios.get("http://localhost:3001/tasks");
+		setTasks(response.data);
+	};
 
-	function removeTask(id: string) {
-		const removeTask = tasks.filter((task) => task.id !== id);
+	const addTask = async (taskData: TaskFormData) => {
+		const newTask = { ...taskData, id: uuid(), isComplete: false };
+		await axios.post("http://localhost:3001/tasks", newTask);
+		fetchTasks();
+		reset();
+	};
 
-		setTasks(removeTask);
-	}
+	const removeTask = async (id: string) => {
+		await axios.delete(`http://localhost:3001/tasks/${id}`);
+		fetchTasks();
+	};
 
-	function toggleTaskCompletedById(id: string) {
-		const newTask = tasks.map((task) => {
-			if (task.id === id) {
-				return {
-					...task,
-					isComplete: !task.isComplete,
-				};
-			}
-
-			return task;
-		});
-
-		setTasks(newTask);
-	}
+	const toggleTaskCompletedById = async (id: string) => {
+		const taskToUpdate = tasks.find((task) => task.id === id);
+		if (taskToUpdate) {
+			const updatedTask = {
+				...taskToUpdate,
+				isComplete: !taskToUpdate.isComplete,
+			};
+			await axios.put(`http://localhost:3001/tasks/${id}`, updatedTask);
+			fetchTasks();
+		}
+	};
 
 	return (
 		<>
 			<Header onAddTask={addTask} />
+
 			<Tasks
 				tasks={tasks}
 				onDelete={removeTask}
