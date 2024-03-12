@@ -17,7 +17,7 @@ export interface ITask {
 
 function App() {
 	const [tasks, setTasks] = useState<ITask[]>([]);
-	const { register, handleSubmit, reset } = useForm();
+	const { reset } = useForm();
 
 	useEffect(() => {
 		fetchTasks();
@@ -52,9 +52,21 @@ function App() {
 				...taskToUpdate,
 				isComplete: !taskToUpdate.isComplete,
 			};
+
 			await axios.put(`http://localhost:3001/tasks/${id}`, updatedTask);
 			fetchTasks();
 		}
+	};
+
+	const onMove = async (dragIndex: number, hoverIndex: number) => {
+		const updatedTasks = [...tasks];
+		const draggedTask = updatedTasks[dragIndex];
+		updatedTasks.splice(dragIndex, 1);
+		updatedTasks.splice(hoverIndex, 0, draggedTask);
+		setTasks(updatedTasks);
+
+		await axios.put("http://localhost:3001/tasks", updatedTasks);
+		fetchTasks();
 	};
 
 	return (
@@ -66,6 +78,7 @@ function App() {
 				onDelete={removeTask}
 				onComplete={toggleTaskCompletedById}
 				onEdit={editTask}
+				onMove={onMove}
 			/>
 		</>
 	);
