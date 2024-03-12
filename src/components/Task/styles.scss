@@ -1,9 +1,116 @@
 .task {
-	// Estilos para a tarefa aqui...
-	position: relative;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	background: #fff;
+	padding: 12px;
+	border-radius: 8px;
+	box-shadow: rgba(154, 161, 171, 0.15) 0px 0px 35px 0px;
+
+	.task-list-container {
+		display: flex;
+		width: 100%;
+	}
+
+	.task-info-title-description {
+		display: flex;
+		width: 100%;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.task-info-generals {
+		display: flex;
+		margin: 0 10px 0 0;
+		gap: 12px;
+	}
+
+	.title-task {
+		font-size: 18px;
+		font-weight: 700;
+		color: #313a46;
+	}
+
+	.description-task {
+		background-color: #727cf5;
+		padding: 4px 10px;
+		font-size: 12px;
+		font-weight: 600;
+		color: #fff;
+		border-radius: 4px;
+		box-shadow: 0 2px 5px 2px rgba(114, 124, 245, 0.15);
+	}
+
+	.date-task {
+		background-color: #0acf97;
+		padding: 4px 10px;
+		font-size: 12px;
+		font-weight: 600;
+		color: #fff;
+		border-radius: 4px;
+		box-shadow: 0 2px 5px 2px rgba(10, 207, 151, 0.15);
+	}
+
+	.priority-task {
+		background-color: #fa5c7c;
+		padding: 4px 10px;
+		font-size: 12px;
+		font-weight: 600;
+		color: #fff;
+		border-radius: 4px;
+		box-shadow: 0 2px 5px 2px rgba(250, 92, 124, 0.15);
+	}
+
+	.task-actions {
+		display: flex;
+		gap: 5px;
+		align-items: center;
+		cursor: pointer;
+	}
+
+	.checkContainer {
+		display: flex;
+		position: relative;
+		cursor: pointer;
+		width: 6%;
+	}
+
+	.checkContainer input {
+		display: none;
+	}
+
+	.checkMark {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 24px;
+		height: 24px;
+		border: 2px solid #000;
+		border-radius: 50%;
+	}
+
+	.checkMark div {
+		width: 20px;
+		height: 20px;
+		background-color: #fff;
+		border-radius: 50%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.checkMark svg {
+		width: 24px;
+		height: 24px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: #621a1a;
+	}
 
 	.editButton {
-		// Estilos do botão de edição aqui...
 		background-color: #007bff;
 		color: white;
 		border: none;
@@ -14,7 +121,6 @@
 	}
 
 	.deleteButton {
-		// Estilos do botão de exclusão aqui...
 		background-color: #dc3545;
 		color: white;
 		border: none;
@@ -25,7 +131,6 @@
 	}
 
 	.completeButton {
-		// Estilos do botão de conclusão aqui...
 		background-color: #28a745;
 		color: white;
 		border: none;
@@ -87,12 +192,10 @@
 		cursor: pointer;
 	}
 
-	button:hover {
-		background-color: #0056b3;
-	}
-
 	.textCompleted {
 		text-decoration: line-through;
 		color: #999999;
+		font-size: 18px;
+		font-weight: 700;
 	}
 }

@@ -55,9 +55,15 @@ const EditModal: React.FC<Props> = ({
 						setEditedTask({ ...editedTask, priority: e.target.value })
 					}
 				>
-					<option value="low">Low</option>
-					<option value="medium">Medium</option>
-					<option value="high">High</option>
+					<option value="low" label="Baixo">
+						Low
+					</option>
+					<option value="medium" label="Médio">
+						Medium
+					</option>
+					<option value="high" label="Urgente">
+						High
+					</option>
 				</select>
 				<button onClick={handleSave}>Save</button>
 				<button onClick={onClose}>Cancel</button>

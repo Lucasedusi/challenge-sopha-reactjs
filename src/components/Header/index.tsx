@@ -42,9 +42,15 @@ export function Header({ onAddTask }: Props) {
 					<option value="" disabled hidden>
 						Prioridade
 					</option>
-					<option value="low">Baixa</option>
-					<option value="medium">Média</option>
-					<option value="high">Alta</option>
+					<option value="low" label="Baixo">
+						Low
+					</option>
+					<option value="medium" label="Médio">
+						Medium
+					</option>
+					<option value="high" label="Urgente">
+						High
+					</option>
 				</select>
 				<button type="submit">
 					Criar

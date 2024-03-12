@@ -1,18 +1,16 @@
 .header {
-	background: var(--gray-700);
+	background: var(--background);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	position: relative;
-	height: 12.5rem;
 }
 
 .newTaksForm {
-	position: absolute;
 	height: 3.375rem;
 	bottom: calc(-3.375rem / 2);
 	width: 100%;
-	max-width: 46rem;
+	max-width: 52rem;
 	display: flex;
 	gap: 0.5rem;
 	padding: 0 1rem;
