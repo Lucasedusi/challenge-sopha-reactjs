@@ -35,6 +35,11 @@ function App() {
 		reset();
 	};
 
+	const editTask = async (id: string, editedTask: Partial<ITask>) => {
+		await axios.put(`http://localhost:3001/tasks/${id}`, editedTask);
+		fetchTasks();
+	};
+
 	const removeTask = async (id: string) => {
 		await axios.delete(`http://localhost:3001/tasks/${id}`);
 		fetchTasks();
@@ -60,6 +65,7 @@ function App() {
 				tasks={tasks}
 				onDelete={removeTask}
 				onComplete={toggleTaskCompletedById}
+				onEdit={editTask}
 			/>
 		</>
 	);

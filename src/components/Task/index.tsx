@@ -1,30 +1,43 @@
-import { BsFillCheckCircleFill } from "react-icons/bs";
-import { TbTrash } from "react-icons/tb";
+import { useState } from "react";
 import { ITask } from "../../App";
 
+import EditModal from "../TaskEditModal";
 import "./styles.scss";
 
 interface Props {
 	task: ITask;
 	onDelete: (taskId: string) => void;
 	onComplete: (taskId: string) => void;
+	onEdit: (taskId: string, editedTask: Partial<ITask>) => void;
 }
 
-export function Task({ task, onDelete, onComplete }: Props) {
+export function Task({ task, onDelete, onComplete, onEdit }: Props) {
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const toggleModal = () => {
+		setIsModalOpen(!isModalOpen);
+	};
+
 	return (
 		<div className="task">
-			<button className="checkContainer" onClick={() => onComplete(task.id)}>
-				{task.isComplete ? <BsFillCheckCircleFill /> : <div />}
-			</button>
 			<div>
 				<p className={task.isComplete ? "textCompleted" : ""}>{task.title}</p>
 				<p>{task.description}</p>
 				<p>{task.dueDate}</p>
 				<p>{task.priority}</p>
 			</div>
-			<button className="deleteButton" onClick={() => onDelete(task.id)}>
-				<TbTrash size={20} />
-			</button>
+			<button onClick={toggleModal}>Edit</button>
+			<button onClick={() => onDelete(task.id)}>Delete</button>
+			<button onClick={() => onComplete(task.id)}>Complete</button>
+
+			<EditModal
+				isOpen={isModalOpen}
+				initialTask={task}
+				onClose={toggleModal}
+				onSave={(editedTask) => {
+					onEdit(task.id, editedTask);
+				}}
+			/>
 		</div>
 	);
 }

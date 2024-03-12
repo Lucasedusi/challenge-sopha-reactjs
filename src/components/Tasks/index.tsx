@@ -7,9 +7,10 @@ interface Props {
 	tasks: ITask[];
 	onDelete: (id: string) => void;
 	onComplete: (id: string) => void;
+	onEdit: (id: string, editedTask: Partial<ITask>) => void;
 }
 
-export function Tasks({ tasks, onDelete, onComplete }: Props) {
+export function Tasks({ tasks, onDelete, onComplete, onEdit }: Props) {
 	return (
 		<section className="task-list">
 			<header className="header-list">
@@ -31,6 +32,7 @@ export function Tasks({ tasks, onDelete, onComplete }: Props) {
 						task={task}
 						onDelete={onDelete}
 						onComplete={onComplete}
+						onEdit={onEdit}
 					/>
 				))}
 			</div>
