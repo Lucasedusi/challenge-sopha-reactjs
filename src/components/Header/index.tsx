@@ -40,6 +40,7 @@ export function Header({ onAddTask }: Props) {
 			<button
 				className="open-modal-button"
 				onClick={() => setModalIsOpen(true)}
+				aria-label="Abrir modal de criação de tarefa"
 			>
 				<AiOutlinePlusCircle size={20} />
 				Criar Tarefa
@@ -50,11 +51,24 @@ export function Header({ onAddTask }: Props) {
 				onRequestClose={() => setModalIsOpen(false)}
 				className="modal"
 				overlayClassName="overlay"
+				aria={{
+					labelledby: "modal-title",
+					describedby: "modal-description",
+				}}
 			>
-				<form className="form-add-task" onSubmit={handleSubmit(onSubmit)}>
+				<form
+					className="form-add-task"
+					onSubmit={handleSubmit(onSubmit)}
+					aria-labelledby="modal-title"
+					aria-describedby="modal-description"
+				>
 					<div className="form-add-task-header">
 						<h2>Adicionar Tarefa</h2>
-						<span className="close" onClick={() => setModalIsOpen(false)}>
+						<span
+							className="close"
+							onClick={() => setModalIsOpen(false)}
+							aria-label="Fechar modal"
+						>
 							<IoClose color="#fff" />
 						</span>
 					</div>
@@ -64,6 +78,8 @@ export function Header({ onAddTask }: Props) {
 							<input
 								{...register("title", { required: true })}
 								placeholder="Título da Tarefa"
+								aria-label="Título da Tarefa"
+								aria-invalid={errors.title ? "true" : "false"}
 							/>
 							{errors.title && errors.title.type === "required" && (
 								<div className="input-error">
@@ -76,6 +92,8 @@ export function Header({ onAddTask }: Props) {
 							<input
 								{...register("description", { required: true })}
 								placeholder="Descrição da Tarefa"
+								aria-label="Descrição da Tarefa"
+								aria-invalid={errors.priority ? "true" : "false"}
 							/>
 						</div>
 					</div>
@@ -84,8 +102,14 @@ export function Header({ onAddTask }: Props) {
 						{...register("dueDate")}
 						type="date"
 						placeholder="Data de Vencimento"
+						aria-label="Data de Vencimento para executar tarefa"
 					/>
-					<select {...register("priority")} defaultValue="">
+					<select
+						{...register("priority")}
+						defaultValue=""
+						aria-label="Prioridade"
+						aria-invalid={errors.priority ? "true" : "false"}
+					>
 						<option value="" disabled hidden>
 							Prioridade
 						</option>

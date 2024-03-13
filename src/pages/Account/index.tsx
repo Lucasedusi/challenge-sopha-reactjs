@@ -61,12 +61,12 @@ export function Account() {
 	return (
 		<AuthLayout>
 			<form onSubmit={handleSubmit(handleCreateUser)}>
-				<div className="login-form-title">
+				<div className="account-form-title">
 					<h2>Cadastre-se</h2>
 					<p>Digite suas informações para acessar seu painel tarefas</p>
 				</div>
 
-				<div className="login-form-input-container">
+				<div className="account-form-input-container">
 					<div className="wrap-input">
 						<input
 							className={name !== "" ? "has-value input" : "input"}
@@ -87,6 +87,7 @@ export function Account() {
 							className={email !== "" ? "has-value input" : "input"}
 							{...register("email")}
 							onChange={(e) => setEmail(e.target.value)}
+							aria-invalid={errors.name ? "true" : "false"}
 						/>
 						<span className="focus-input" data-placeholder="Email"></span>
 					</div>
@@ -103,6 +104,7 @@ export function Account() {
 							className={password !== "" ? "has-value input" : "input"}
 							{...register("password")}
 							onChange={(e) => setPassword(e.target.value)}
+							aria-invalid={errors.password ? "true" : "false"}
 						/>
 						<span className="focus-input" data-placeholder="Senha"></span>
 					</div>
@@ -119,6 +121,7 @@ export function Account() {
 							className={confirPassword !== "" ? "has-value input" : "input"}
 							{...register("confirPassword")}
 							onChange={(e) => setConfirPassword(e.target.value)}
+							aria-invalid={errors.confirPassword ? "true" : "false"}
 						/>
 						<span className="focus-input" data-placeholder="Senha"></span>
 					</div>

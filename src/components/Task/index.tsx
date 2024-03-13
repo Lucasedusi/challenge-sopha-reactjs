@@ -2,8 +2,7 @@ import { useState } from "react";
 import { FaCheck, FaTrash } from "react-icons/fa";
 import { MdBlock, MdEdit } from "react-icons/md";
 
-import { ITask } from "../../App";
-
+import { ITask } from "../../pages/Home";
 import EditModal from "../TaskEditModal";
 import "./styles.scss";
 
@@ -62,13 +61,17 @@ export function Task({
 		>
 			<div className="task-list-container">
 				<div
-					className={`checkContainer ${isChecked ? "checked" : ""}`}
+					className={`check-container ${isChecked ? "checked" : ""}`}
 					onClick={handleCheckboxClick}
+					aria-label={
+						isChecked ? "Desmarcar tarefa" : "Marcar tarefa como concluída"
+					}
+					role="button"
 				>
 					{isChecked ? (
-						<FaCheck className="checkIcon" />
+						<FaCheck className="check-icon" aria-hidden="true" />
 					) : (
-						<div className="checkIcon" />
+						<div className="check-icon" aria-hidden="true" />
 					)}
 				</div>
 
@@ -85,12 +88,28 @@ export function Task({
 						</div>
 
 						<div className="task-actions">
-							<MdBlock size={28} color="#91989D" />
-							<MdEdit size={28} color="#91989D" onClick={toggleModal} />
+							<MdBlock
+								size={28}
+								color="#91989D"
+								aria-label="Bloquear tarefa"
+								role="button"
+								tabIndex={0}
+							/>
+							<MdEdit
+								size={28}
+								color="#91989D"
+								onClick={toggleModal}
+								aria-label="Editar tarefa"
+								role="button"
+								tabIndex={0}
+							/>
 							<FaTrash
 								size={28}
 								color="#91989D"
 								onClick={() => onDelete(task.id)}
+								aria-label="Excluir tarefa"
+								role="button"
+								tabIndex={0}
 							/>
 						</div>
 					</div>

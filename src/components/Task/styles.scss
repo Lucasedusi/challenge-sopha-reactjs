@@ -29,6 +29,14 @@
 		div {
 			display: flex;
 			gap: 8px;
+
+			@media screen and (max-width: 768px) {
+				flex-direction: column;
+			}
+		}
+
+		@media screen and (max-width: 768px) {
+			align-items: center;
 		}
 	}
 
@@ -87,7 +95,7 @@
 		}
 	}
 
-	.checkContainer {
+	.check-container {
 		align-items: center;
 		border-radius: 4px;
 		background: #dedfe1;
@@ -101,7 +109,7 @@
 		transition: background-color 0.5s ease;
 	}
 
-	.checkContainer.checked {
+	.check-container.checked {
 		background-color: #727cf5;
 	}
 

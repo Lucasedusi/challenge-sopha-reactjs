@@ -70,6 +70,7 @@ export function Login(): ReactNode {
 								className={email !== "" ? "has-value input" : "input"}
 								{...register("email")}
 								onChange={(e) => setEmail(e.target.value)}
+								aria-invalid={errors.email ? "true" : "false"}
 							/>
 							<span className="focus-input" data-placeholder="Email"></span>
 						</div>
@@ -86,6 +87,7 @@ export function Login(): ReactNode {
 								className={password !== "" ? "has-value input" : "input"}
 								{...register("password")}
 								onChange={(e) => setPassword(e.target.value)}
+								aria-invalid={errors.password ? "true" : "false"}
 							/>
 							<span className="focus-input" data-placeholder="Senha"></span>
 						</div>

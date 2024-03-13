@@ -30,10 +30,18 @@
 	color: #727cf5;
 	font-size: 0.875rem;
 	font-weight: 600;
+
+	@media screen and (max-width: 768px) {
+		font-size: 12px;
+	}
 }
 
-.header-list p.textPurple {
+.header-list p.text-success {
 	color: #727cf5;
+
+	@media screen and (max-width: 768px) {
+		font-size: 12px;
+	}
 }
 
 .header-list span {

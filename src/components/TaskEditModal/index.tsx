@@ -1,7 +1,7 @@
 import React from "react";
-import { useForm } from "react-hook-form"; // Importar o hook useForm do react-hook-form
-import Modal from "react-modal"; // Importar o componente Modal do react-modal
-import { ITask } from "../../App";
+import { useForm } from "react-hook-form";
+import Modal from "react-modal";
+import { ITask } from "../../pages/Home";
 
 import { IoClose } from "react-icons/io5";
 import { RiErrorWarningFill } from "react-icons/ri";
@@ -38,11 +38,20 @@ const EditModal: React.FC<Props> = ({
 			onRequestClose={onClose}
 			overlayClassName="overlay"
 			className="modal"
+			aria={{
+				labelledby: "modal-title",
+				describedby: "modal-description",
+			}}
 		>
-			<form className="form-add-task" onSubmit={handleSubmit(handleSave)}>
+			<form
+				className="form-add-task"
+				onSubmit={handleSubmit(handleSave)}
+				aria-labelledby="modal-title"
+				aria-describedby="modal-description"
+			>
 				<div className="form-add-task-header">
 					<h2>Adicionar Tarefa</h2>
-					<span className="close" onClick={onClose}>
+					<span className="close" onClick={onClose} role="button" tabIndex={0}>
 						<IoClose color="#fff" />
 					</span>
 				</div>
@@ -52,6 +61,8 @@ const EditModal: React.FC<Props> = ({
 						<input
 							{...register("title", { required: true })}
 							placeholder="Título da Tarefa"
+							aria-label="Título da Tarefa"
+							aria-invalid={errors.title ? "true" : "false"}
 						/>
 						{errors.title && errors.title.type === "required" && (
 							<div className="input-error">
@@ -64,6 +75,8 @@ const EditModal: React.FC<Props> = ({
 						<input
 							{...register("description", { required: true })}
 							placeholder="Descrição da Tarefa"
+							aria-label="Descrição da Tarefa"
+							aria-invalid={errors.description ? "true" : "false"}
 						/>
 					</div>
 				</div>
@@ -72,8 +85,14 @@ const EditModal: React.FC<Props> = ({
 					{...register("dueDate")}
 					type="date"
 					placeholder="Data de Vencimento"
+					aria-label="Data de Vencimento"
 				/>
-				<select {...register("priority")} defaultValue="">
+				<select
+					{...register("priority")}
+					defaultValue=""
+					aria-label="Prioridade"
+					aria-invalid={errors.priority ? "true" : "false"}
+				>
 					<option value="" disabled hidden>
 						Prioridade
 					</option>
