@@ -2,17 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
+import { ITask } from "../../@types/Tasks";
 import { Header, TaskFormData } from "../../components/Header";
 import { Tasks } from "../../components/Tasks";
-
-export interface ITask {
-	id: string;
-	title: string;
-	description: string;
-	dueDate: string;
-	priority: string;
-	isComplete: boolean;
-}
 
 export function Home() {
 	const [tasks, setTasks] = useState<ITask[]>([]);

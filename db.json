@@ -1,35 +1,11 @@
 {
   "tasks": [
     {
-      "title": "Trabalho",
-      "description": "Desenvolver um método ToDo, utilizando ReactJs",
-      "dueDate": "2024-03-15",
-      "priority": "high",
-      "id": "9ca594f8-149c-4c14-884e-57cec026f980",
-      "isComplete": false
-    },
-    {
-      "title": "TCC ueg",
-      "description": "Trabalho da faculdade, tema de biologia",
-      "dueDate": "2024-03-15",
-      "priority": "high",
-      "id": "9a56706e-0535-4dd9-9aa1-ff95a14b778f",
-      "isComplete": false
-    },
-    {
-      "title": "Teste",
-      "description": "Outro teste",
-      "dueDate": "2024-02-12",
-      "priority": "high",
-      "id": "f19ae474-966f-4926-ae94-4f9e3717b2f7",
-      "isComplete": false
-    },
-    {
-      "title": "fazer almoço22222",
-      "description": "oi",
-      "dueDate": "2024-03-14",
-      "priority": "high",
-      "id": "90058ad2-34ee-4a6f-9be8-2b87f4efe3ba",
+      "title": "Janta",
+      "description": "Fazer janta com frango assado",
+      "dueDate": "2024-04-12",
+      "priority": "low",
+      "id": "5d50ecb9-9afb-402a-9a9e-7600a7fce09c",
       "isComplete": false
     }
   ]

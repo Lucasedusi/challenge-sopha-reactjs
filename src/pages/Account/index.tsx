@@ -8,14 +8,8 @@ import { AuthLayout } from "../../components/AuthLayout";
 import { Button } from "../../components/Button";
 import { Api } from "../../services/api";
 
+import { IAccount } from "../../@types/User";
 import "./styles.scss";
-
-interface IUser {
-	name: string;
-	email: string;
-	password: string;
-	confirPassword: string;
-}
 
 const accountSchema = yup.object().shape({
 	name: yup.string().required("Obrigatório"),
@@ -34,7 +28,7 @@ export function Account() {
 	const [password, setPassword] = useState("");
 	const [confirPassword, setConfirPassword] = useState("");
 
-	const { register, handleSubmit, formState, clearErrors } = useForm<IUser>({
+	const { register, handleSubmit, formState, clearErrors } = useForm<IAccount>({
 		resolver: yupResolver(accountSchema),
 	});
 
@@ -42,7 +36,7 @@ export function Account() {
 
 	const navigate = useNavigate();
 
-	const handleCreateUser: SubmitHandler<IUser> = async () => {
+	const handleCreateUser: SubmitHandler<IAccount> = async () => {
 		try {
 			const data = {
 				name: name,

@@ -1,10 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Modal from "react-modal";
-import { ITask } from "../../pages/Home";
+import {} from "../../pages/Home";
 
 import { IoClose } from "react-icons/io5";
 import { RiErrorWarningFill } from "react-icons/ri";
+import { ITask } from "../../@types/Tasks";
 import "./styles.scss";
 
 interface Props {

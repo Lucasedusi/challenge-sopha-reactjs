@@ -9,12 +9,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { RiErrorWarningFill } from "react-icons/ri";
+import { ISignIn } from "../../@types/User";
 import "./styles.scss";
-
-interface IUser {
-	email: string;
-	password: string;
-}
 
 const loginSchema = yup.object().shape({
 	email: yup
@@ -33,7 +29,7 @@ export function Login(): ReactNode {
 
 	const { signIn, signed } = useContext(AuthContext);
 
-	const { register, handleSubmit, formState } = useForm<IUser>({
+	const { register, handleSubmit, formState } = useForm<ISignIn>({
 		resolver: yupResolver(loginSchema),
 	});
 

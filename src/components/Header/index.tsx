@@ -8,27 +8,21 @@ import { IoClose } from "react-icons/io5";
 import Modal from "react-modal";
 import "react-toastify/dist/ReactToastify.css";
 
+import { ITaskFormData } from "../../@types/Tasks";
 import "./styles.scss";
 
-export interface TaskFormData {
-	title: string;
-	description: string;
-	dueDate: string;
-	priority: string;
-}
-
 interface Props {
-	onAddTask: (taskData: TaskFormData) => void;
+	onAddTask: (taskData: ITaskFormData) => void;
 }
 
 export function Header({ onAddTask }: Props) {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 
 	const { register, handleSubmit, reset, formState, clearErrors } =
-		useForm<TaskFormData>();
+		useForm<ITaskFormData>();
 	const { errors } = formState;
 
-	function onSubmit(data: TaskFormData) {
+	function onSubmit(data: ITaskFormData) {
 		onAddTask(data);
 
 		setModalIsOpen(false);

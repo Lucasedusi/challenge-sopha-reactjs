@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaCheck, FaTrash } from "react-icons/fa";
 import { MdBlock, MdEdit } from "react-icons/md";
 
-import { ITask } from "../../pages/Home";
+import { ITask } from "../../@types/Tasks";
 import EditModal from "../TaskEditModal";
 import "./styles.scss";
 
@@ -25,10 +25,15 @@ export function Task({
 }: Props) {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [isChecked, setIsChecked] = useState(task.isComplete);
+	const [isBlocked, setIsBlocked] = useState(false);
 
 	const handleCheckboxClick = () => {
 		setIsChecked(!isChecked);
 		onComplete(task.id);
+	};
+
+	const handleBlockClick = () => {
+		setIsBlocked(true);
 	};
 
 	const toggleModal = () => {
@@ -59,7 +64,7 @@ export function Task({
 			onDragOver={handleDragOver}
 			onDrop={handleDrop}
 		>
-			<div className="task-list-container">
+			<div className={`task-list-container ${isBlocked ? "blocked" : ""}`}>
 				<div
 					className={`check-container ${isChecked ? "checked" : ""}`}
 					onClick={handleCheckboxClick}
@@ -76,7 +81,7 @@ export function Task({
 				</div>
 
 				<div className="task-info-title">
-					<p className={task.isComplete ? "textCompleted" : "title-task"}>
+					<p className={task.isComplete ? "text-completed" : "title-task"}>
 						{task.title}
 					</p>
 
@@ -91,6 +96,7 @@ export function Task({
 							<MdBlock
 								size={28}
 								color="#91989D"
+								onClick={handleBlockClick}
 								aria-label="Bloquear tarefa"
 								role="button"
 								tabIndex={0}
