@@ -1,9 +1,23 @@
 .header {
-	background: var(--background);
+	width: 100%;
+	max-width: 52rem;
+	margin: 4rem auto 0 auto;
+	padding: 0 1rem;
+}
+
+.open-modal-button {
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	position: relative;
+	gap: 8px;
+	cursor: pointer;
+	border: none;
+	background-color: #0acf97;
+	color: #fff;
+	border-radius: 4px;
+	font-size: 16px;
+	font-weight: 800;
+	padding: 12px 18px;
+	box-shadow: 0px 4px 5px 0px rgba(10, 207, 151, 0.15);
 }
 
 .modal {

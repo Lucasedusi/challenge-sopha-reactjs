@@ -33,9 +33,12 @@ export function Header({ onAddTask }: Props) {
 		<header className="header">
 			<ToastContainer />
 
-			<button className="openModalButton" onClick={() => setModalIsOpen(true)}>
-				Criar Tarefa
+			<button
+				className="open-modal-button"
+				onClick={() => setModalIsOpen(true)}
+			>
 				<AiOutlinePlusCircle size={20} />
+				Criar Tarefa
 			</button>
 			<Modal
 				isOpen={modalIsOpen}
