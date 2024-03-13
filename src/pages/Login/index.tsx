@@ -5,6 +5,10 @@ import { AuthLayout } from "../../components/AuthLayout";
 import { Button } from "../../components/Button";
 import { AuthContext } from "../../context/auth";
 
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+import { RiErrorWarningFill } from "react-icons/ri";
 import "./styles.scss";
 
 interface IUser {
@@ -12,13 +16,26 @@ interface IUser {
 	password: string;
 }
 
+const loginSchema = yup.object().shape({
+	email: yup
+		.string()
+		.required("E-mail Obrigatório")
+		.email("E-mail ou Senha inválidos"),
+	password: yup
+		.string()
+		.required("Senha Obrigatória")
+		.min(2, "E-mail ou Senha inválidos"),
+});
+
 export function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
 	const { signIn, signed } = useContext(AuthContext);
 
-	const { register, handleSubmit, formState } = useForm<IUser>({});
+	const { register, handleSubmit, formState } = useForm<IUser>({
+		resolver: yupResolver(loginSchema),
+	});
 
 	const { errors } = formState;
 
@@ -58,7 +75,7 @@ export function Login() {
 
 						{errors.email?.message && (
 							<div className="input-error">
-								<span>{errors.email?.message}</span>
+								<RiErrorWarningFill size={22} color="#fa5c7c" />
 							</div>
 						)}
 
@@ -74,7 +91,7 @@ export function Login() {
 
 						{errors.password?.message && (
 							<div className="input-error">
-								<span>{errors.password?.message}</span>
+								<RiErrorWarningFill size={22} color="#fa5c7c" />
 							</div>
 						)}
 					</div>
