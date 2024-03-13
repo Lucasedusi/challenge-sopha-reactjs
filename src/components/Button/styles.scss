@@ -1,0 +1,32 @@
+.btn-primary {
+	font-size: 15px;
+	border: none;
+	border-radius: 10px;
+	color: #fff;
+	line-height: 1.2;
+	text-transform: uppercase;
+	font-weight: 500 !important;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 100%;
+	padding: 16px 0px;
+
+	background: #89131d;
+
+	transition: filter 0.4s;
+
+	&:hover {
+		filter: brightness(0.9);
+	}
+}
+
+.exit-btn {
+	transition: all 0.4s;
+
+	&:hover {
+		color: #e461a0;
+	}
+}
