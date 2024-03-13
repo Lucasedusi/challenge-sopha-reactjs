@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { ReactNode, useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthLayout } from "../../components/AuthLayout";
@@ -27,7 +27,7 @@ const loginSchema = yup.object().shape({
 		.min(2, "E-mail ou Senha inválidos"),
 });
 
-export function Login() {
+export function Login(): ReactNode {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -51,7 +51,7 @@ export function Login() {
 	};
 
 	if (signed) {
-		return navigate("/home");
+		navigate("/home");
 	} else {
 		return (
 			<AuthLayout>
@@ -59,7 +59,8 @@ export function Login() {
 					<div className="login-form-title">
 						<h2>Login</h2>
 						<p>
-							Digite seu endereço de e-mail e senha para acessar suas tarefas
+							Digite seu endereço de e-mail e senha para acessar seu painel
+							tarefas
 						</p>
 					</div>
 
@@ -101,7 +102,7 @@ export function Login() {
 
 				<div className="footer-account">
 					Ainda não tem conta?
-					<Link to="/register" className="footer-account-redirect">
+					<Link to="/account" className="footer-account-redirect">
 						Cadastre-se
 					</Link>
 				</div>
