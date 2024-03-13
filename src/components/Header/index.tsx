@@ -13,10 +13,12 @@ import "./styles.scss";
 
 interface Props {
 	onAddTask: (taskData: ITaskFormData) => void;
+	onCategoryChange: (category: string) => void;
 }
 
-export function Header({ onAddTask }: Props) {
+export function Header({ onAddTask, onCategoryChange }: Props) {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [selectedCategory, setSelectedCategory] = useState("");
 
 	const { register, handleSubmit, reset, formState, clearErrors } =
 		useForm<ITaskFormData>();
@@ -29,6 +31,12 @@ export function Header({ onAddTask }: Props) {
 		reset();
 	}
 
+	const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+		const category = event.target.value;
+		setSelectedCategory(category);
+		onCategoryChange(category);
+	};
+
 	return (
 		<header className="header">
 			<button
@@ -39,6 +47,19 @@ export function Header({ onAddTask }: Props) {
 				<AiOutlinePlusCircle size={20} />
 				Criar Tarefa
 			</button>
+
+			<select
+				value={selectedCategory}
+				onChange={handleSelectChange}
+				aria-label="Filtrar por categoria"
+				className="category-select"
+			>
+				<option value="">Todas as Categorias</option>
+				<option value="work">Trabalho</option>
+				<option value="studies">Estudos</option>
+				<option value="leisure">Lazer</option>
+				<option value="others">Outros</option>
+			</select>
 
 			<Modal
 				isOpen={modalIsOpen}
@@ -76,7 +97,7 @@ export function Header({ onAddTask }: Props) {
 								aria-invalid={errors.title ? "true" : "false"}
 							/>
 							{errors.title && errors.title.type === "required" && (
-								<div className="input-error">
+								<div className="input-error-add">
 									<RiErrorWarningFill size={22} color="#fa5c7c" />
 								</div>
 							)}
@@ -99,6 +120,29 @@ export function Header({ onAddTask }: Props) {
 						aria-label="Data de Vencimento para executar tarefa"
 					/>
 					<select
+						{...register("category")}
+						defaultValue=""
+						aria-label="Categoria"
+						aria-invalid={errors.category ? "true" : "false"}
+					>
+						<option value="" disabled hidden>
+							Categoria
+						</option>
+						<option value="work" label="Trabalho">
+							Trabalho
+						</option>
+						<option value="studies" label="Estudos">
+							Estudos
+						</option>
+						<option value="leisure" label="Lazer">
+							Lazer
+						</option>
+						<option value="others" label="Outros">
+							Outros
+						</option>
+					</select>
+
+					<select
 						{...register("priority")}
 						defaultValue=""
 						aria-label="Prioridade"
@@ -117,6 +161,7 @@ export function Header({ onAddTask }: Props) {
 							High
 						</option>
 					</select>
+
 					<button type="submit">Criar</button>
 				</form>
 			</Modal>

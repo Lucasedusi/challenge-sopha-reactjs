@@ -88,6 +88,30 @@ const EditModal: React.FC<Props> = ({
 					placeholder="Data de Vencimento"
 					aria-label="Data de Vencimento"
 				/>
+
+				<select
+					{...register("category")}
+					defaultValue=""
+					aria-label="Categoria"
+					aria-invalid={errors.category ? "true" : "false"}
+				>
+					<option value="" disabled hidden>
+						Categoria
+					</option>
+					<option value="work" label="Trabalho">
+						Trabalho
+					</option>
+					<option value="studies" label="Estudos">
+						Estudos
+					</option>
+					<option value="leisure" label="Lazer">
+						Lazer
+					</option>
+					<option value="others" label="Outros">
+						Outros
+					</option>
+				</select>
+
 				<select
 					{...register("priority")}
 					defaultValue=""

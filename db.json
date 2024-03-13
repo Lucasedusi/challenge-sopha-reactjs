@@ -1,11 +1,39 @@
 {
   "tasks": [
     {
-      "title": "Janta",
-      "description": "Fazer janta com frango assado",
-      "dueDate": "2024-04-12",
-      "priority": "low",
-      "id": "5d50ecb9-9afb-402a-9a9e-7600a7fce09c",
+      "title": "Ir a igreja",
+      "description": "Domingo tem culto",
+      "dueDate": "2024-03-17",
+      "priority": "medium",
+      "category": "studies",
+      "id": "f40e0f5f-fe9e-43a7-9b88-1f2de466ff3a",
+      "isComplete": false
+    },
+    {
+      "title": "teste",
+      "description": "fd",
+      "dueDate": "2024-03-23",
+      "category": "work",
+      "priority": "medium",
+      "id": "c9d5da0d-8bbc-4d49-8618-b7c23121281a",
+      "isComplete": false
+    },
+    {
+      "title": "ola",
+      "description": "eedsd",
+      "dueDate": "2024-03-14",
+      "category": "studies",
+      "priority": "medium",
+      "id": "ca54b04f-9be0-4d44-a582-34cdcf444b8c",
+      "isComplete": false
+    },
+    {
+      "title": "Teste",
+      "description": "oi",
+      "dueDate": "2028-09-12",
+      "category": "leisure",
+      "priority": "high",
+      "id": "0ed9d08f-5328-409c-8b5a-9cbaf4364072",
       "isComplete": false
     }
   ]

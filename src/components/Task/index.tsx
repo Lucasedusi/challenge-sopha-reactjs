@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCheck, FaTrash } from "react-icons/fa";
 import { MdBlock, MdEdit } from "react-icons/md";
 
@@ -26,6 +26,8 @@ export function Task({
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [isChecked, setIsChecked] = useState(task.isComplete);
 	const [isBlocked, setIsBlocked] = useState(false);
+
+	useEffect(() => {}, [task.isComplete]);
 
 	const handleCheckboxClick = () => {
 		setIsChecked(!isChecked);
@@ -81,7 +83,7 @@ export function Task({
 				</div>
 
 				<div className="task-info-title">
-					<p className={task.isComplete ? "text-completed" : "title-task"}>
+					<p className={task.isComplete ? "textCompleted" : "title-task"}>
 						{task.title}
 					</p>
 
@@ -89,6 +91,7 @@ export function Task({
 						<div>
 							<p className="description-task">{task.description}</p>
 							<p className="date-task">{task.dueDate}</p>
+							<p className="date-task">{task.category}</p>
 							<p className="priority-task">{task.priority}</p>
 						</div>
 

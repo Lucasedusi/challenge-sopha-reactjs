@@ -12,5 +12,6 @@ export interface ITaskFormData {
 	title: string;
 	description: string;
 	dueDate: string;
+	category: string;
 	priority: string;
 }
