@@ -3,18 +3,18 @@
     {
       "title": "Trabalho",
       "description": "Desenvolver um método ToDo, utilizando ReactJs",
-      "dueDate": "2024-03-13",
+      "dueDate": "2024-03-15",
       "priority": "high",
       "id": "9ca594f8-149c-4c14-884e-57cec026f980",
       "isComplete": false
     },
     {
-      "title": "TCC",
+      "title": "TCC ueg",
       "description": "Trabalho da faculdade, tema de biologia",
       "dueDate": "2024-03-15",
       "priority": "high",
       "id": "9a56706e-0535-4dd9-9aa1-ff95a14b778f",
-      "isComplete": true
+      "isComplete": false
     },
     {
       "title": "Teste",
@@ -22,6 +22,14 @@
       "dueDate": "2024-02-12",
       "priority": "high",
       "id": "f19ae474-966f-4926-ae94-4f9e3717b2f7",
+      "isComplete": false
+    },
+    {
+      "title": "Tarefa",
+      "description": "criar modal",
+      "dueDate": "2029-07-12",
+      "priority": "medium",
+      "id": "c343bd1d-13b5-4ed5-98cb-dbd7936ff8f4",
       "isComplete": false
     }
   ]

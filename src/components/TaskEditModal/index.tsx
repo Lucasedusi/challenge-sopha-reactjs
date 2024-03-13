@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form"; // Importar o hook useForm do react-hook-form
 import Modal from "react-modal"; // Importar o componente Modal do react-modal
 import { ITask } from "../../App";
+
+import { IoClose } from "react-icons/io5";
+import { RiErrorWarningFill } from "react-icons/ri";
+import "./styles.scss";
 
 interface Props {
 	isOpen: boolean;
@@ -15,10 +20,15 @@ const EditModal: React.FC<Props> = ({
 	onClose,
 	onSave,
 }) => {
-	const [editedTask, setEditedTask] = useState<Partial<ITask>>(initialTask);
+	const {
+		register,
+		handleSubmit,
+		setValue,
+		formState: { errors },
+	} = useForm<Partial<ITask>>({ defaultValues: initialTask });
 
-	const handleSave = () => {
-		onSave(editedTask);
+	const handleSave = (data: Partial<ITask>) => {
+		onSave(data);
 		onClose();
 	};
 
@@ -26,41 +36,47 @@ const EditModal: React.FC<Props> = ({
 		<Modal
 			isOpen={isOpen}
 			onRequestClose={onClose}
-			className="modal"
 			overlayClassName="overlay"
+			className="modal"
 		>
-			<div className="newTaksForm">
-				<span className="close" onClick={onClose}>
-					&times;
-				</span>
-				<h2>Edit Task</h2>
+			<form className="form-add-task" onSubmit={handleSubmit(handleSave)}>
+				<div className="form-add-task-header">
+					<h2>Adicionar Tarefa</h2>
+					<span className="close" onClick={onClose}>
+						<IoClose color="#fff" />
+					</span>
+				</div>
+
+				<div className="form-add-inputs-title-description">
+					<div>
+						<input
+							{...register("title", { required: true })}
+							placeholder="Título da Tarefa"
+						/>
+						{errors.title && errors.title.type === "required" && (
+							<div className="input-error">
+								<RiErrorWarningFill size={22} color="#fa5c7c" />
+							</div>
+						)}
+					</div>
+
+					<div>
+						<input
+							{...register("description", { required: true })}
+							placeholder="Descrição da Tarefa"
+						/>
+					</div>
+				</div>
+
 				<input
-					type="text"
-					value={editedTask.title || ""}
-					onChange={(e) =>
-						setEditedTask({ ...editedTask, title: e.target.value })
-					}
-				/>
-				<input
-					type="text"
-					value={editedTask.description || ""}
-					onChange={(e) =>
-						setEditedTask({ ...editedTask, description: e.target.value })
-					}
-				/>
-				<input
+					{...register("dueDate")}
 					type="date"
-					value={editedTask.dueDate || ""}
-					onChange={(e) =>
-						setEditedTask({ ...editedTask, dueDate: e.target.value })
-					}
+					placeholder="Data de Vencimento"
 				/>
-				<select
-					value={editedTask.priority || ""}
-					onChange={(e) =>
-						setEditedTask({ ...editedTask, priority: e.target.value })
-					}
-				>
+				<select {...register("priority")} defaultValue="">
+					<option value="" disabled hidden>
+						Prioridade
+					</option>
 					<option value="low" label="Baixo">
 						Low
 					</option>
@@ -71,8 +87,8 @@ const EditModal: React.FC<Props> = ({
 						High
 					</option>
 				</select>
-				<button onClick={handleSave}>Save</button>
-			</div>
+				<button type="submit">Criar</button>
+			</form>
 		</Modal>
 	);
 };

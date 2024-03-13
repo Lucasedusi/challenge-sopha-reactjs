@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import { RiErrorWarningFill } from "react-icons/ri";
+
+import { IoClose } from "react-icons/io5";
+
 import Modal from "react-modal";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { useState } from "react";
 import "./styles.scss";
 
 export interface TaskFormData {
@@ -19,20 +22,21 @@ interface Props {
 }
 
 export function Header({ onAddTask }: Props) {
-	const { register, handleSubmit, reset } = useForm<TaskFormData>();
 	const [modalIsOpen, setModalIsOpen] = useState(false);
+
+	const { register, handleSubmit, reset, formState, clearErrors } =
+		useForm<TaskFormData>();
+	const { errors } = formState;
 
 	function onSubmit(data: TaskFormData) {
 		onAddTask(data);
-		reset();
 
 		setModalIsOpen(false);
+		reset();
 	}
 
 	return (
 		<header className="header">
-			<ToastContainer />
-
 			<button
 				className="open-modal-button"
 				onClick={() => setModalIsOpen(true)}
@@ -40,21 +44,42 @@ export function Header({ onAddTask }: Props) {
 				<AiOutlinePlusCircle size={20} />
 				Criar Tarefa
 			</button>
+
 			<Modal
 				isOpen={modalIsOpen}
 				onRequestClose={() => setModalIsOpen(false)}
 				className="modal"
 				overlayClassName="overlay"
 			>
-				<form className="newTaksForm" onSubmit={handleSubmit(onSubmit)}>
-					<input
-						{...register("title", { required: true })}
-						placeholder="Título da Tarefa"
-					/>
-					<input
-						{...register("description")}
-						placeholder="Descrição da Tarefa"
-					/>
+				<form className="form-add-task" onSubmit={handleSubmit(onSubmit)}>
+					<div className="form-add-task-header">
+						<h2>Adicionar Tarefa</h2>
+						<span className="close" onClick={() => setModalIsOpen(false)}>
+							<IoClose color="#fff" />
+						</span>
+					</div>
+
+					<div className="form-add-inputs-title-description">
+						<div>
+							<input
+								{...register("title", { required: true })}
+								placeholder="Título da Tarefa"
+							/>
+							{errors.title && errors.title.type === "required" && (
+								<div className="input-error">
+									<RiErrorWarningFill size={22} color="#fa5c7c" />
+								</div>
+							)}
+						</div>
+
+						<div>
+							<input
+								{...register("description", { required: true })}
+								placeholder="Descrição da Tarefa"
+							/>
+						</div>
+					</div>
+
 					<input
 						{...register("dueDate")}
 						type="date"
