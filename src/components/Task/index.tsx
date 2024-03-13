@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { BsFillCheckCircleFill } from "react-icons/bs";
-import { FaTrash } from "react-icons/fa";
+import { FaCheck, FaTrash } from "react-icons/fa";
 import { MdBlock, MdEdit } from "react-icons/md";
 
 import { ITask } from "../../App";
@@ -26,6 +25,12 @@ export function Task({
 	index,
 }: Props) {
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isChecked, setIsChecked] = useState(task.isComplete);
+
+	const handleCheckboxClick = () => {
+		setIsChecked(!isChecked);
+		onComplete(task.id);
+	};
 
 	const toggleModal = () => {
 		setIsModalOpen(!isModalOpen);
@@ -56,16 +61,16 @@ export function Task({
 			onDrop={handleDrop}
 		>
 			<div className="task-list-container">
-				<label className="checkContainer">
-					<input
-						type="checkbox"
-						checked={task.isComplete}
-						onChange={() => onComplete(task.id)}
-					/>
-					<span className="checkMark">
-						{task.isComplete ? <BsFillCheckCircleFill /> : <div />}
-					</span>
-				</label>
+				<div
+					className={`checkContainer ${isChecked ? "checked" : ""}`}
+					onClick={handleCheckboxClick}
+				>
+					{isChecked ? (
+						<FaCheck className="checkIcon" />
+					) : (
+						<div className="checkIcon" />
+					)}
+				</div>
 
 				<div className="task-info-title">
 					<p className={task.isComplete ? "textCompleted" : "title-task"}>
@@ -80,10 +85,10 @@ export function Task({
 						</div>
 
 						<div className="task-actions">
-							<MdBlock size={22} color="#91989D" />
-							<MdEdit size={22} color="#91989D" onClick={toggleModal} />
+							<MdBlock size={28} color="#91989D" />
+							<MdEdit size={28} color="#91989D" onClick={toggleModal} />
 							<FaTrash
-								size={20}
+								size={28}
 								color="#91989D"
 								onClick={() => onDelete(task.id)}
 							/>

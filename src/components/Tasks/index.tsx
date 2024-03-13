@@ -14,18 +14,6 @@ interface Props {
 export function Tasks({ tasks, onDelete, onComplete, onEdit, onMove }: Props) {
 	return (
 		<section className="task-list">
-			<header className="header-list">
-				<div>
-					<p>Tarefas Criadas</p>
-					<span>{tasks.length}</span>
-				</div>
-				<div>
-					<p className="textPurple">Concluídas</p>
-					<span>
-						{tasks.filter((task) => task.isComplete).length} de {tasks.length}
-					</span>
-				</div>
-			</header>
 			<div className="list">
 				{tasks.map((task, index) => (
 					<Task
@@ -38,6 +26,19 @@ export function Tasks({ tasks, onDelete, onComplete, onEdit, onMove }: Props) {
 						index={index}
 					/>
 				))}
+			</div>
+
+			<div className="header-list">
+				<div>
+					<p>Tarefas Criadas</p>
+					<span>{tasks.length}</span>
+				</div>
+				<div>
+					<p className="textPurple">Concluídas</p>
+					<span>
+						{tasks.filter((task) => task.isComplete).length} de {tasks.length}
+					</span>
+				</div>
 			</div>
 		</section>
 	);

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Modal from "react-modal"; // Importar o componente Modal do react-modal
 import { ITask } from "../../App";
 
 interface Props {
@@ -21,9 +22,14 @@ const EditModal: React.FC<Props> = ({
 		onClose();
 	};
 
-	return isOpen ? (
-		<div className="modal">
-			<div className="modal-content">
+	return (
+		<Modal
+			isOpen={isOpen}
+			onRequestClose={onClose}
+			className="modal"
+			overlayClassName="overlay"
+		>
+			<div className="newTaksForm">
 				<span className="close" onClick={onClose}>
 					&times;
 				</span>
@@ -66,10 +72,9 @@ const EditModal: React.FC<Props> = ({
 					</option>
 				</select>
 				<button onClick={handleSave}>Save</button>
-				<button onClick={onClose}>Cancel</button>
 			</div>
-		</div>
-	) : null;
+		</Modal>
+	);
 };
 
 export default EditModal;

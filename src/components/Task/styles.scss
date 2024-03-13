@@ -4,7 +4,7 @@
 	align-items: center;
 	background: #fff;
 	padding: 12px;
-	border-radius: 8px;
+	border-radius: 4px;
 	box-shadow: rgba(154, 161, 171, 0.15) 0px 0px 35px 0px;
 
 	.task-list-container {
@@ -16,7 +16,7 @@
 		display: flex;
 		width: 100%;
 		flex-direction: column;
-		margin: 0 10px 0 0;
+		margin: 0 14px;
 		gap: 4px;
 	}
 
@@ -33,14 +33,14 @@
 	}
 
 	.title-task {
-		font-size: 18px;
+		font-size: 16px;
 		font-weight: 700;
 		color: #313a46;
 	}
 
 	.description-task {
 		background-color: #727cf5;
-		padding: 4px 10px;
+		padding: 6px 10px;
 		font-size: 12px;
 		font-weight: 600;
 		color: #fff;
@@ -49,18 +49,18 @@
 	}
 
 	.date-task {
-		background-color: #0acf97;
-		padding: 4px 10px;
+		background-color: #727cf5;
+		padding: 6px 10px;
 		font-size: 12px;
 		font-weight: 600;
 		color: #fff;
 		border-radius: 4px;
-		box-shadow: 0 2px 5px 2px rgba(10, 207, 151, 0.15);
+		box-shadow: 0 2px 5px 2px rgba(114, 124, 245, 0.15);
 	}
 
 	.priority-task {
 		background-color: #fa5c7c;
-		padding: 4px 10px;
+		padding: 6px 10px;
 		font-size: 12px;
 		font-weight: 600;
 		color: #fff;
@@ -75,46 +75,47 @@
 		cursor: pointer;
 	}
 
+	.task-actions svg {
+		background: #dedfe1;
+		padding: 6px;
+		border-radius: 2px;
+
+		transition: filter 0.2s;
+
+		&:hover {
+			filter: opacity(0.8);
+		}
+	}
+
 	.checkContainer {
-		display: flex;
-		position: relative;
+		align-items: center;
+		border-radius: 4px;
+		background: #dedfe1;
 		cursor: pointer;
-		width: 6%;
+		display: flex;
+		flex-basis: 28px;
+		flex-shrink: 0;
+		height: 26px;
+		justify-content: center;
+		padding: 5px;
+		transition: background-color 0.5s ease;
 	}
 
-	.checkContainer input {
-		display: none;
+	.checkContainer.checked {
+		background-color: #727cf5;
 	}
 
-	.checkMark {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 24px;
-		height: 24px;
-		border: 2px solid #000;
-		border-radius: 50%;
+	.checkIcon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
 	}
 
-	.checkMark div {
-		width: 20px;
-		height: 20px;
-		background-color: #fff;
-		border-radius: 50%;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
-
-	.checkMark svg {
-		width: 24px;
-		height: 24px;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		color: #621a1a;
+	.checkIcon svg {
+		width: 16px;
+		height: 16px;
 	}
 
 	.editButton {
@@ -122,7 +123,7 @@
 		color: white;
 		border: none;
 		padding: 5px 10px;
-		border-radius: 5px;
+		border-radius: 4px;
 		cursor: pointer;
 		margin-right: 5px;
 	}
@@ -132,7 +133,7 @@
 		color: white;
 		border: none;
 		padding: 5px 10px;
-		border-radius: 5px;
+		border-radius: 4px;
 		cursor: pointer;
 		margin-right: 5px;
 	}
@@ -142,7 +143,7 @@
 		color: white;
 		border: none;
 		padding: 5px 10px;
-		border-radius: 5px;
+		border-radius: 4px;
 		cursor: pointer;
 		margin-right: 5px;
 	}
@@ -162,7 +163,7 @@
 	.modal-content {
 		background-color: white;
 		padding: 20px;
-		border-radius: 5px;
+		border-radius: 4px;
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 		width: 400px;
 		position: relative;
@@ -195,7 +196,7 @@
 		color: white;
 		border: none;
 		padding: 10px 20px;
-		border-radius: 5px;
+		border-radius: 4px;
 		cursor: pointer;
 	}
 
