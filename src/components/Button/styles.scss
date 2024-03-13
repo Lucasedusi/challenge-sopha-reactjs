@@ -1,25 +1,18 @@
 .btn-primary {
-	font-size: 15px;
-	border: none;
-	border-radius: 10px;
-	color: #fff;
-	line-height: 1.2;
-	text-transform: uppercase;
-	font-weight: 500 !important;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
 	width: 100%;
-	padding: 16px 0px;
+	background-color: #0acf97;
+	color: #fff;
+	border-radius: 4px;
+	border: none;
+	font-size: 18px;
+	font-weight: 800;
+	padding: 12px 0;
+	box-shadow: 0px 4px 5px 0px rgba(10, 207, 151, 0.15);
 
-	background: #89131d;
-
-	transition: filter 0.4s;
+	transition: filter 0.2s;
 
 	&:hover {
-		filter: brightness(0.9);
+		filter: opacity(0.8);
 	}
 }
 

@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { RiUserAddFill } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthLayout } from "../../components/AuthLayout";
 import { Button } from "../../components/Button";
 import { AuthContext } from "../../context/auth";
+
+import "./styles.scss";
 
 interface IUser {
 	email: string;
@@ -37,55 +38,56 @@ export function Login() {
 	} else {
 		return (
 			<AuthLayout>
-				<form onSubmit={handleSubmit(handleSignIn)} className="login-form">
-					<span className="login-form-title">
-						{/* <img src={logoImg} alt="Jovem Programador" /> */}
-					</span>
-
-					<div className="wrap-input">
-						<input
-							className={email !== "" ? "has-value input" : "input"}
-							{...register("email")}
-							onChange={(e) => setEmail(e.target.value)}
-						/>
-						<span className="focus-input" data-placeholder="Email"></span>
+				<form onSubmit={handleSubmit(handleSignIn)}>
+					<div className="login-form-title">
+						<h2>Login</h2>
+						<p>
+							Digite seu endereço de e-mail e senha para acessar suas tarefas
+						</p>
 					</div>
 
-					{errors.email?.message && (
-						<div className="input-error">
-							<span>{errors.email?.message}</span>
+					<div className="login-form-input-container">
+						<div className="wrap-input">
+							<input
+								className={email !== "" ? "has-value input" : "input"}
+								{...register("email")}
+								onChange={(e) => setEmail(e.target.value)}
+							/>
+							<span className="focus-input" data-placeholder="Email"></span>
 						</div>
-					)}
 
-					<div className="wrap-input">
-						<input
-							type="password"
-							className={password !== "" ? "has-value input" : "input"}
-							{...register("password")}
-							onChange={(e) => setPassword(e.target.value)}
-						/>
-						<span className="focus-input" data-placeholder="Senha"></span>
-					</div>
+						{errors.email?.message && (
+							<div className="input-error">
+								<span>{errors.email?.message}</span>
+							</div>
+						)}
 
-					{errors.password?.message && (
-						<div className="input-error">
-							<span>{errors.password?.message}</span>
+						<div className="wrap-input">
+							<input
+								type="password"
+								className={password !== "" ? "has-value input" : "input"}
+								{...register("password")}
+								onChange={(e) => setPassword(e.target.value)}
+							/>
+							<span className="focus-input" data-placeholder="Senha"></span>
 						</div>
-					)}
 
-					<div className="container-login-form-btn">
-						<Button type="submit" className="login-form-btn">
-							Entrar
-						</Button>
+						{errors.password?.message && (
+							<div className="input-error">
+								<span>{errors.password?.message}</span>
+							</div>
+						)}
 					</div>
 
-					<div className="text-center">
-						<RiUserAddFill fontSize={17} color="#fff" />
-						<Link to="/register" className="link-password">
-							Criar Conta
-						</Link>
-					</div>
+					<Button type="submit">Entrar</Button>
 				</form>
+
+				<div className="footer-account">
+					Ainda não tem conta?
+					<Link to="/register" className="footer-account-redirect">
+						Cadastre-se
+					</Link>
+				</div>
 			</AuthLayout>
 		);
 	}
