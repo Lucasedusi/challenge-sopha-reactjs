@@ -1,39 +1,21 @@
 {
   "tasks": [
     {
-      "title": "Ir a igreja",
-      "description": "Domingo tem culto",
-      "dueDate": "2024-03-17",
-      "priority": "medium",
-      "category": "studies",
-      "id": "f40e0f5f-fe9e-43a7-9b88-1f2de466ff3a",
+      "title": "Leitura",
+      "description": "leitura da bíblia",
+      "dueDate": "2924-05-27",
+      "category": "Outros",
+      "priority": "Não Urgente",
+      "id": "1833865a-af8d-41b8-bd70-5c56d1235f04",
       "isComplete": false
     },
     {
-      "title": "teste",
-      "description": "fd",
-      "dueDate": "2024-03-23",
-      "category": "work",
-      "priority": "medium",
-      "id": "c9d5da0d-8bbc-4d49-8618-b7c23121281a",
-      "isComplete": false
-    },
-    {
-      "title": "ola",
-      "description": "eedsd",
-      "dueDate": "2024-03-14",
-      "category": "studies",
-      "priority": "medium",
-      "id": "ca54b04f-9be0-4d44-a582-34cdcf444b8c",
-      "isComplete": false
-    },
-    {
-      "title": "Teste",
-      "description": "oi",
-      "dueDate": "2028-09-12",
-      "category": "leisure",
-      "priority": "high",
-      "id": "0ed9d08f-5328-409c-8b5a-9cbaf4364072",
+      "title": "Trabalhoss",
+      "description": "capinar lote",
+      "dueDate": "2024-05-29",
+      "category": "Trabalho",
+      "priority": "Urgente",
+      "id": "036ac364-9f16-4653-9773-516d579039b9",
       "isComplete": false
     }
   ]

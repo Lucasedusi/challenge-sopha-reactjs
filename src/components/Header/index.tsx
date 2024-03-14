@@ -55,10 +55,10 @@ export function Header({ onAddTask, onCategoryChange }: Props) {
 				className="category-select"
 			>
 				<option value="">Todas as Categorias</option>
-				<option value="work">Trabalho</option>
-				<option value="studies">Estudos</option>
-				<option value="leisure">Lazer</option>
-				<option value="others">Outros</option>
+				<option value="Trabalho">Trabalho</option>
+				<option value="Estudos">Estudos</option>
+				<option value="Compras">Compras</option>
+				<option value="Outros">Outros</option>
 			</select>
 
 			<Modal
@@ -128,16 +128,16 @@ export function Header({ onAddTask, onCategoryChange }: Props) {
 						<option value="" disabled hidden>
 							Categoria
 						</option>
-						<option value="work" label="Trabalho">
+						<option value="Trabalho" label="Trabalho">
 							Trabalho
 						</option>
-						<option value="studies" label="Estudos">
+						<option value="Estudos" label="Estudos">
 							Estudos
 						</option>
-						<option value="leisure" label="Lazer">
-							Lazer
+						<option value="Compras" label="Compras">
+							Compras
 						</option>
-						<option value="others" label="Outros">
+						<option value="Outros" label="Outros">
 							Outros
 						</option>
 					</select>
@@ -151,14 +151,11 @@ export function Header({ onAddTask, onCategoryChange }: Props) {
 						<option value="" disabled hidden>
 							Prioridade
 						</option>
-						<option value="low" label="Baixo">
-							Low
+						<option value="Urgente" label="Urgente">
+							Urgente
 						</option>
-						<option value="medium" label="Médio">
-							Medium
-						</option>
-						<option value="high" label="Urgente">
-							High
+						<option value="Não Urgente" label="Não Urgente">
+							Não Urgente
 						</option>
 					</select>
 

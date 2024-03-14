@@ -220,4 +220,24 @@
 		pointer-events: none;
 		opacity: 0.5;
 	}
+
+	.urgent {
+		background-color: #fa5c7c;
+		padding: 6px 10px;
+		font-size: 12px;
+		font-weight: 600;
+		color: #fff;
+		border-radius: 4px;
+		box-shadow: 0 2px 5px 2px rgba(250, 92, 124, 0.15);
+	}
+
+	.not-urgent {
+		background-color: #dada5a;
+		padding: 6px 10px;
+		font-size: 12px;
+		font-weight: 600;
+		color: #fff;
+		border-radius: 4px;
+		box-shadow: 0 2px 5px 2px rgba(218, 218, 90, 0.15);
+	}
 }

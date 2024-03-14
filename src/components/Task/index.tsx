@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { FaCheck, FaTrash } from "react-icons/fa";
 import { MdBlock, MdEdit } from "react-icons/md";
@@ -58,6 +59,11 @@ export function Task({
 			onMove(dragIndex, hoverIndex);
 		}
 	};
+
+	function formatDate(dateString: string | number | Date) {
+		return format(new Date(dateString), "dd-MM-yyyy");
+	}
+
 	return (
 		<div
 			className="task"
@@ -90,9 +96,15 @@ export function Task({
 					<div className="task-infos-generals">
 						<div>
 							<p className="description-task">{task.description}</p>
-							<p className="date-task">{task.dueDate}</p>
+							<p className="date-task">{formatDate(task.dueDate)}</p>
 							<p className="date-task">{task.category}</p>
-							<p className="priority-task">{task.priority}</p>
+							<p
+								className={`priority-task ${
+									task.priority === "Urgente" ? "urgent" : "not-urgent"
+								}`}
+							>
+								{task.priority}
+							</p>
 						</div>
 
 						<div className="task-actions">

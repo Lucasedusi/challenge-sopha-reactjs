@@ -98,16 +98,16 @@ const EditModal: React.FC<Props> = ({
 					<option value="" disabled hidden>
 						Categoria
 					</option>
-					<option value="work" label="Trabalho">
+					<option value="Trabalho" label="Trabalho">
 						Trabalho
 					</option>
-					<option value="studies" label="Estudos">
+					<option value="Estudos" label="Estudos">
 						Estudos
 					</option>
-					<option value="leisure" label="Lazer">
-						Lazer
+					<option value="Compras" label="Compras">
+						Compras
 					</option>
-					<option value="others" label="Outros">
+					<option value="Outros" label="Outros">
 						Outros
 					</option>
 				</select>
@@ -121,14 +121,11 @@ const EditModal: React.FC<Props> = ({
 					<option value="" disabled hidden>
 						Prioridade
 					</option>
-					<option value="low" label="Baixo">
-						Low
+					<option value="Urgente" label="Urgente">
+						Urgente
 					</option>
-					<option value="medium" label="Médio">
-						Medium
-					</option>
-					<option value="high" label="Urgente">
-						High
+					<option value="Não Urgente" label="Não Urgente">
+						Não Urgente
 					</option>
 				</select>
 				<button type="submit">Criar</button>

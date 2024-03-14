@@ -1,9 +1,12 @@
+import { IoMdExit } from "react-icons/io";
 import { TbClipboardText } from "react-icons/tb";
 import {} from "../../App";
 import {} from "../../pages/Home";
 import { Task } from "../Task";
 
+import { useContext } from "react";
 import { ITask } from "../../@types/Tasks";
+import { AuthContext } from "../../context/auth";
 import "./styles.scss";
 
 interface Props {
@@ -15,6 +18,12 @@ interface Props {
 }
 
 export function Tasks({ tasks, onDelete, onComplete, onEdit, onMove }: Props) {
+	const { signOut } = useContext(AuthContext);
+
+	const handleSignOut = () => {
+		signOut();
+	};
+
 	return (
 		<section className="task-list" aria-label="Lista de Tarefas">
 			<div className="list">
@@ -47,6 +56,7 @@ export function Tasks({ tasks, onDelete, onComplete, onEdit, onMove }: Props) {
 					<p>Tarefas Criadas</p>
 					<span>{tasks.length}</span>
 				</div>
+
 				<div>
 					<p className="text-success" aria-label="Número de Tarefas Concluídas">
 						Concluídas
@@ -54,6 +64,10 @@ export function Tasks({ tasks, onDelete, onComplete, onEdit, onMove }: Props) {
 					<span>
 						{tasks.filter((task) => task.isComplete).length} de {tasks.length}
 					</span>
+				</div>
+
+				<div className="sign-out">
+					<IoMdExit onClick={handleSignOut} color="#fa5c7c" size={22} />
 				</div>
 			</div>
 		</section>
