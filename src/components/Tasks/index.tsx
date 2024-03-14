@@ -1,7 +1,5 @@
 import { IoMdExit } from "react-icons/io";
 import { TbClipboardText } from "react-icons/tb";
-import {} from "../../App";
-import {} from "../../pages/Home";
 import { Task } from "../Task";
 
 import { useContext } from "react";

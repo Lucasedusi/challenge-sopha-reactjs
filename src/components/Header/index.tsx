@@ -1,14 +1,14 @@
+import Modal from "react-modal";
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { ITaskFormData } from "../../@types/Tasks";
+
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import { IoClose } from "react-icons/io5";
 import { RiErrorWarningFill } from "react-icons/ri";
 
-import { IoClose } from "react-icons/io5";
-
-import Modal from "react-modal";
-import "react-toastify/dist/ReactToastify.css";
-
-import { ITaskFormData } from "../../@types/Tasks";
+import { Button } from "../Button";
 import "./styles.scss";
 
 interface Props {
@@ -39,14 +39,14 @@ export function Header({ onAddTask, onCategoryChange }: Props) {
 
 	return (
 		<header className="header">
-			<button
+			<Button
 				className="open-modal-button"
 				onClick={() => setModalIsOpen(true)}
 				aria-label="Abrir modal de criação de tarefa"
 			>
 				<AiOutlinePlusCircle size={20} />
 				Criar Tarefa
-			</button>
+			</Button>
 
 			<select
 				value={selectedCategory}

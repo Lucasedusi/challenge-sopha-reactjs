@@ -10,6 +10,7 @@ import * as yup from "yup";
 
 import { RiErrorWarningFill } from "react-icons/ri";
 import { ISignIn } from "../../@types/User";
+
 import "./styles.scss";
 
 const loginSchema = yup.object().shape({
@@ -98,9 +99,9 @@ export function Login(): ReactNode {
 					<Button type="submit">Entrar</Button>
 				</form>
 
-				<div className="footer-account">
+				<div className="footer-sign-in">
 					Ainda não tem conta?
-					<Link to="/account" className="footer-account-redirect">
+					<Link to="/account" className="footer-sign-in-redirect">
 						Cadastre-se
 					</Link>
 				</div>

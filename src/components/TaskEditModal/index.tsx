@@ -1,11 +1,11 @@
 import React from "react";
-import { useForm } from "react-hook-form";
 import Modal from "react-modal";
-import {} from "../../pages/Home";
 
+import { useForm } from "react-hook-form";
 import { IoClose } from "react-icons/io5";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { ITask } from "../../@types/Tasks";
+
 import "./styles.scss";
 
 interface Props {
@@ -24,7 +24,6 @@ const EditModal: React.FC<Props> = ({
 	const {
 		register,
 		handleSubmit,
-		setValue,
 		formState: { errors },
 	} = useForm<Partial<ITask>>({ defaultValues: initialTask });
 

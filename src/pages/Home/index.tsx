@@ -11,7 +11,7 @@ export function Home() {
 	const [filteredTasks, setFilteredTasks] = useState<ITask[]>([]);
 	const { reset } = useForm();
 
-	const fetchTasks = async () => {
+	const handleGetTasks = async () => {
 		const response = await axios.get("http://localhost:3001/tasks");
 
 		setTasks(response.data);
@@ -19,24 +19,24 @@ export function Home() {
 	};
 
 	useEffect(() => {
-		fetchTasks();
+		handleGetTasks();
 	}, []);
 
 	const addTask = async (taskData: ITaskFormData) => {
 		const newTask = { ...taskData, id: uuid(), isComplete: false };
 		await axios.post("http://localhost:3001/tasks", newTask);
-		fetchTasks();
+		handleGetTasks();
 		reset();
 	};
 
 	const editTask = async (id: string, editedTask: Partial<ITask>) => {
 		await axios.put(`http://localhost:3001/tasks/${id}`, editedTask);
-		fetchTasks();
+		handleGetTasks();
 	};
 
 	const removeTask = async (id: string) => {
 		await axios.delete(`http://localhost:3001/tasks/${id}`);
-		fetchTasks();
+		handleGetTasks();
 	};
 
 	const toggleTaskCompletedById = async (id: string) => {
@@ -66,7 +66,7 @@ export function Home() {
 		setTasks(updatedTasks);
 
 		await axios.put("http://localhost:3001/tasks", updatedTasks);
-		fetchTasks();
+		handleGetTasks();
 	};
 
 	const onCategoryChange = (category: string) => {

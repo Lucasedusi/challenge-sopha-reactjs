@@ -1,8 +1,10 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { FaCircleChevronLeft } from "react-icons/fa6";
 import { RiErrorWarningFill } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { AuthLayout } from "../../components/AuthLayout";
 import { Button } from "../../components/Button";
@@ -131,6 +133,12 @@ export function Account() {
 
 				<Button type="submit">Entrar</Button>
 			</form>
+			<div className="footer-account">
+				<Link to="/" className="footer-account-redirect">
+					<FaCircleChevronLeft size={14} />
+					Retornar
+				</Link>
+			</div>
 		</AuthLayout>
 	);
 }
