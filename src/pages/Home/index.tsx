@@ -11,16 +11,16 @@ export function Home() {
 	const [filteredTasks, setFilteredTasks] = useState<ITask[]>([]);
 	const { reset } = useForm();
 
+	useEffect(() => {
+		handleGetTasks();
+	}, []);
+
 	const handleGetTasks = async () => {
 		const response = await axios.get("http://localhost:3001/tasks");
 
 		setTasks(response.data);
 		setFilteredTasks(response.data);
 	};
-
-	useEffect(() => {
-		handleGetTasks();
-	}, []);
 
 	const addTask = async (taskData: ITaskFormData) => {
 		const newTask = { ...taskData, id: uuid(), isComplete: false };
@@ -46,27 +46,22 @@ export function Home() {
 				...taskToUpdate,
 				isComplete: !taskToUpdate.isComplete,
 			};
-
 			await axios.put(`http://localhost:3001/tasks/${id}`, updatedTask);
-
 			const updatedTasks = tasks.map((task) =>
-				task.id === id ? { ...task, isComplete: !task.isComplete } : task
+				task.id === id ? updatedTask : task
 			);
-
 			setTasks(updatedTasks);
 			setFilteredTasks(updatedTasks);
 		}
 	};
 
-	const onMove = async (dragIndex: number, hoverIndex: number) => {
+	const onMove = (dragIndex: number, hoverIndex: number) => {
 		const updatedTasks = [...tasks];
 		const draggedTask = updatedTasks[dragIndex];
 		updatedTasks.splice(dragIndex, 1);
 		updatedTasks.splice(hoverIndex, 0, draggedTask);
 		setTasks(updatedTasks);
-
-		await axios.put("http://localhost:3001/tasks", updatedTasks);
-		handleGetTasks();
+		setFilteredTasks(updatedTasks);
 	};
 
 	const onCategoryChange = (category: string) => {
