@@ -26,6 +26,15 @@
       "priority": "Urgente",
       "id": "bbd1730a-2d86-4a1f-9fc9-5ffd4067ebbc",
       "isComplete": false
+    },
+    {
+      "title": "Energia",
+      "description": "Equatorial/GO",
+      "dueDate": "2024-03-23",
+      "category": "Outros",
+      "priority": "Não Urgente",
+      "id": "3c10b4e1-4425-462d-920c-844a76953cc2",
+      "isComplete": false
     }
   ]
 }

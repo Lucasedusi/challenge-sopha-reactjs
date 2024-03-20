@@ -49,19 +49,24 @@ export function Tasks({ tasks, onDelete, onComplete, onEdit, onMove }: Props) {
 				)}
 			</div>
 
-			<div className="header-list">
-				<div>
-					<p>Tarefas Criadas</p>
-					<span>{tasks.length}</span>
-				</div>
+			<div className="footer-list">
+				<div className="footer-list-length">
+					<div>
+						<p>Tarefas Criadas</p>
+						<span>{tasks.length}</span>
+					</div>
 
-				<div>
-					<p className="text-success" aria-label="Número de Tarefas Concluídas">
-						Concluídas
-					</p>
-					<span>
-						{tasks.filter((task) => task.isComplete).length} de {tasks.length}
-					</span>
+					<div>
+						<p
+							className="text-success"
+							aria-label="Número de Tarefas Concluídas"
+						>
+							Concluídas
+						</p>
+						<span>
+							{tasks.filter((task) => task.isComplete).length} de {tasks.length}
+						</span>
+					</div>
 				</div>
 
 				<div className="sign-out">
