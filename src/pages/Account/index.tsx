@@ -48,7 +48,7 @@ export function Account() {
 
 			await Api.post("create", data);
 
-			navigate("/login");
+			navigate("/");
 		} catch (error) {
 			console.error("Erro ao cadastrar usuário:", error);
 		}
@@ -131,7 +131,7 @@ export function Account() {
 					)}
 				</div>
 
-				<Button type="submit">Entrar</Button>
+				<Button type="submit">Cadastrar</Button>
 			</form>
 			<div className="footer-account">
 				<Link to="/" className="footer-account-redirect">

@@ -71,7 +71,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 	};
 
 	const signOut = () => {
-		localStorage.clear();
+		localStorage.removeItem("@Auth:token");
 		setUser(null);
 	};
 

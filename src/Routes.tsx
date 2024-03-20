@@ -11,7 +11,7 @@ export function Router() {
 			<Route path="/" element={<Login />} />
 			<Route path="/account" element={<Account />} />
 			<Route element={<ProtectedRoute />}>
-				<Route path="/home" element={<Home />} />
+				<Route path="/home" element={<Home />}></Route>
 			</Route>
 		</Routes>
 	);

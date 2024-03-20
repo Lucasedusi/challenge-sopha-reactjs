@@ -1,21 +1,30 @@
 {
   "tasks": [
     {
-      "title": "Leitura",
-      "description": "leitura da bíblia",
-      "dueDate": "2924-05-27",
-      "category": "Outros",
-      "priority": "Não Urgente",
+      "title": "Leitura Matinal",
+      "description": "ler algum livro hoje",
+      "dueDate": "2024-03-20",
+      "category": "Estudos",
+      "priority": "Urgente",
       "id": "1833865a-af8d-41b8-bd70-5c56d1235f04",
       "isComplete": false
     },
     {
-      "title": "Trabalhoss",
-      "description": "capinar lote",
-      "dueDate": "2024-05-29",
-      "category": "Trabalho",
-      "priority": "Urgente",
+      "title": "Comprar café",
+      "description": "Café moído rancheiro",
+      "dueDate": "2024-03-15",
+      "category": "Compras",
+      "priority": "Não Urgente",
       "id": "036ac364-9f16-4653-9773-516d579039b9",
+      "isComplete": false
+    },
+    {
+      "title": "Caminhada",
+      "description": "Fazer caminhada de manhã",
+      "dueDate": "2024-03-18",
+      "category": "Outros",
+      "priority": "Urgente",
+      "id": "bbd1730a-2d86-4a1f-9fc9-5ffd4067ebbc",
       "isComplete": false
     }
   ]
