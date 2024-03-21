@@ -1,11 +1,10 @@
-import EditModal from "../TaskEditModal";
-
 import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { FaCheck, FaTrash } from "react-icons/fa";
 import { MdBlock, MdEdit } from "react-icons/md";
 
 import { ITask } from "../../@types/Tasks";
+import { EditModal } from "../TaskEditModal";
 
 import "./styles.scss";
 

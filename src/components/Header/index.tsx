@@ -1,7 +1,7 @@
-import Modal from "react-modal";
-
 import { useState } from "react";
+
 import { useForm } from "react-hook-form";
+import Modal from "react-modal";
 import { ITaskFormData } from "../../@types/Tasks";
 
 import { AiOutlinePlusCircle } from "react-icons/ai";

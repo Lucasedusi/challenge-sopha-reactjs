@@ -1,4 +1,4 @@
-import { ReactNode, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthLayout } from "../../components/AuthLayout";
@@ -24,7 +24,7 @@ const loginSchema = yup.object().shape({
 		.min(2, "E-mail ou Senha inválidos"),
 });
 
-export function Login(): ReactNode {
+export function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 

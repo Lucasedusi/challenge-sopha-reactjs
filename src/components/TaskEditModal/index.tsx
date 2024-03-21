@@ -1,4 +1,3 @@
-import React from "react";
 import Modal from "react-modal";
 
 import { useForm } from "react-hook-form";
@@ -15,12 +14,7 @@ interface Props {
 	onSave: (editedTask: Partial<ITask>) => void;
 }
 
-const EditModal: React.FC<Props> = ({
-	isOpen,
-	initialTask,
-	onClose,
-	onSave,
-}) => {
+export function EditModal({ isOpen, initialTask, onClose, onSave }: Props) {
 	const {
 		register,
 		handleSubmit,
@@ -131,6 +125,4 @@ const EditModal: React.FC<Props> = ({
 			</form>
 		</Modal>
 	);
-};
-
-export default EditModal;
+}

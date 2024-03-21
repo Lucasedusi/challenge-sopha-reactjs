@@ -2,13 +2,31 @@ import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
 import { AuthLayout } from ".";
 
-test("renders AuthLayout with children", () => {
-	const { getByTestId } = render(
-		<AuthLayout>
-			<div data-testid="child-component">Child Component</div>
-		</AuthLayout>
-	);
+describe("AuthLayout Component", () => {
+	it("renders children element", () => {
+		const { getByTestId } = render(
+			<AuthLayout>
+				<div data-testid="child-element">Child Element</div>
+			</AuthLayout>
+		);
 
-	const childComponent = getByTestId("child-component");
-	expect(childComponent).toBeInTheDocument();
+		const childElement = getByTestId("child-element");
+		expect(childElement).toBeInTheDocument();
+	});
+
+	it("renders container and wrap elements", () => {
+		const { container } = render(
+			<AuthLayout>
+				<div data-testid="child-element">Child Element</div>
+			</AuthLayout>
+		);
+
+		const containerElement = container.querySelector(".container");
+		const containerLogin = container.querySelector(".container-login");
+		const wrapElement = container.querySelector(".wrap-login");
+
+		expect(containerElement).toBeInTheDocument();
+		expect(containerLogin).toBeInTheDocument();
+		expect(wrapElement).toBeInTheDocument();
+	});
 });
