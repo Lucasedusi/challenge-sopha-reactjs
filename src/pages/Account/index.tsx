@@ -30,7 +30,7 @@ export function Account() {
 	const [password, setPassword] = useState("");
 	const [confirPassword, setConfirPassword] = useState("");
 
-	const { register, handleSubmit, formState, clearErrors } = useForm<IAccount>({
+	const { register, handleSubmit, formState } = useForm<IAccount>({
 		resolver: yupResolver(accountSchema),
 	});
 

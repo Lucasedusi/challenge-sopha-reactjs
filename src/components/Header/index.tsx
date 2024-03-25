@@ -24,12 +24,12 @@ export function Header({ onAddTask, onCategoryChange }: Props) {
 		useForm<ITaskFormData>();
 	const { errors } = formState;
 
-	function onSubmit(data: ITaskFormData) {
+	const onSubmit = (data: ITaskFormData) => {
 		onAddTask(data);
 
 		setModalIsOpen(false);
 		reset();
-	}
+	};
 
 	const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		const category = event.target.value;

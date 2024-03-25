@@ -50,9 +50,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 				});
 			} else {
 				setUser(response.data.user);
+
 				Api.defaults.headers.common[
 					"Authorization"
 				] = `Bearer ${response.data.token}`;
+
 				localStorage.setItem("@Auth:token", response.data.token);
 				localStorage.setItem("@Auth:user", JSON.stringify(response.data.user));
 			}

@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaCheck, FaTrash } from "react-icons/fa";
 import { MdBlock, MdEdit } from "react-icons/md";
 
@@ -29,8 +29,6 @@ export function Task({
 	const [isChecked, setIsChecked] = useState(task.isComplete);
 	const [isBlocked, setIsBlocked] = useState(false);
 
-	useEffect(() => {}, [task.isComplete]);
-
 	const handleCheckboxClick = () => {
 		setIsChecked(!isChecked);
 		onComplete(task.id);
@@ -54,8 +52,10 @@ export function Task({
 
 	const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
 		e.preventDefault();
+
 		const dragIndex = Number(e.dataTransfer.getData("text/plain"));
 		const hoverIndex = index;
+
 		if (dragIndex !== hoverIndex) {
 			onMove(dragIndex, hoverIndex);
 		}

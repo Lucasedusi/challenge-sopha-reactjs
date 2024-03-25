@@ -25,6 +25,7 @@ export function Home() {
 	const addTask = async (taskData: ITaskFormData) => {
 		const newTask = { ...taskData, id: uuid(), isComplete: false };
 		await axios.post("http://localhost:3001/tasks", newTask);
+
 		handleGetTasks();
 		reset();
 	};
@@ -41,15 +42,19 @@ export function Home() {
 
 	const toggleTaskCompletedById = async (id: string) => {
 		const taskToUpdate = tasks.find((task) => task.id === id);
+
 		if (taskToUpdate) {
 			const updatedTask = {
 				...taskToUpdate,
 				isComplete: !taskToUpdate.isComplete,
 			};
+
 			await axios.put(`http://localhost:3001/tasks/${id}`, updatedTask);
+
 			const updatedTasks = tasks.map((task) =>
 				task.id === id ? updatedTask : task
 			);
+
 			setTasks(updatedTasks);
 			setFilteredTasks(updatedTasks);
 		}
@@ -58,8 +63,10 @@ export function Home() {
 	const onMove = (dragIndex: number, hoverIndex: number) => {
 		const updatedTasks = [...tasks];
 		const draggedTask = updatedTasks[dragIndex];
+
 		updatedTasks.splice(dragIndex, 1);
 		updatedTasks.splice(hoverIndex, 0, draggedTask);
+
 		setTasks(updatedTasks);
 		setFilteredTasks(updatedTasks);
 	};

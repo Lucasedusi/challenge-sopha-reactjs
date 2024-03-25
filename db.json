@@ -7,15 +7,6 @@
       "category": "Estudos",
       "priority": "Urgente",
       "id": "1833865a-af8d-41b8-bd70-5c56d1235f04",
-      "isComplete": true
-    },
-    {
-      "title": "Comprar café",
-      "description": "Café moído rancheiro",
-      "dueDate": "2024-03-15",
-      "category": "Compras",
-      "priority": "Não Urgente",
-      "id": "036ac364-9f16-4653-9773-516d579039b9",
       "isComplete": false
     },
     {
@@ -34,6 +25,15 @@
       "category": "Outros",
       "priority": "Não Urgente",
       "id": "3c10b4e1-4425-462d-920c-844a76953cc2",
+      "isComplete": false
+    },
+    {
+      "title": "Teste Sopha",
+      "description": "teste",
+      "dueDate": "2024-03-21",
+      "category": "Trabalho",
+      "priority": "Urgente",
+      "id": "153ca480-52d6-4712-aab4-b859bb7138ce",
       "isComplete": false
     }
   ]
